@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Security.AccessControl;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System;
 
 namespace Linq_Practice_3
 {
@@ -24,7 +23,7 @@ namespace Linq_Practice_3
             for (int i = 0; i < Languages.Count; i++)
             {
                 if (i == Languages.Count - 1) result += Languages[i] + ".";
-                else { result += Languages[i] + ", ";}
+                else { result += Languages[i] + ", "; }
             }
             return result;
         }
@@ -73,7 +72,7 @@ namespace Linq_Practice_3
             Console.WriteLine();
             Console.WriteLine("Отфильтровано с помощью метода-расширения:");
             Console.WriteLine("Отсортировано с помощью метода OrderBy");
-            IEnumerable <User> adults = users.Where(user => user.Age > 20).OrderBy(user=>user.Age);
+            IEnumerable<User> adults = users.Where(user => user.Age > 20).OrderBy(user => user.Age);
             foreach (var user in adults)
             {
                 Console.WriteLine(user);

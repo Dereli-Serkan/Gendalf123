@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 //Изучение проекций
 namespace Linq_Practice_5
@@ -20,7 +17,7 @@ namespace Linq_Practice_5
         }
     }
 
-    
+
 
     class Program
     {
@@ -39,12 +36,21 @@ namespace Linq_Practice_5
                 Console.WriteLine(user);
             }
 
-            var names = from user in users
-                        select user.Name;
+            var names_1 = from user in users
+                          select user.Name;
 
             Console.WriteLine();
             Console.WriteLine("Только имена пользователей: ");
-            foreach (var name in names)
+            foreach (var name in names_1)
+            {
+                Console.WriteLine(name);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("То же самое с использованием методов-расшиерений: ");
+            var names_2 = users.Select(u => u.Name);
+
+            foreach (var name in names_2)
             {
                 Console.WriteLine(name);
             }
@@ -77,6 +83,14 @@ namespace Linq_Practice_5
             Console.WriteLine("Фильтрованный массив: ");
             foreach (var n in items)
                 Console.WriteLine($"{n.FirstName} - {n.DateOfBirth}");
+
+            Console.WriteLine();
+            Console.WriteLine("То же самое с использованием методов-расширений: ");
+            var choices = users.Select(u => new { FirstName = u.Name, DateOfBirth = DateTime.Now.Year - u.Age });
+            foreach (var choice in choices)
+            {
+                Console.WriteLine($"{choice.FirstName} - {choice.DateOfBirth}");
+            }
         }
 
         static void Main(string[] args)
